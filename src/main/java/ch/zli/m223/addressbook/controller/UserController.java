@@ -1,7 +1,7 @@
-package controller;
+package ch.zli.m223.addressbook.controller;
 
-import ch.zli.m223.addressbook.entity.Person;
-import ch.zli.m223.addressbook.service.PersonService;
+import ch.zli.m223.addressbook.entity.User;
+import ch.zli.m223.addressbook.service.UserService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -13,18 +13,18 @@ import java.util.List;
  * @version 23.09.2021
  * Project: addressbookserver
  */
-@Path("/persons")
-public class PersonController extends AbstractController<Person> {
+@Path("/users")
+public class UserController extends AbstractController<User> {
 
     @Inject
-    PersonService personService;
+    UserService userService;
 
     @Override
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Person create(Person entity) {
-        return personService.create(entity);
+    public User create(User entity) {
+        return userService.create(entity);
     }
 
     @Override
@@ -32,21 +32,21 @@ public class PersonController extends AbstractController<Person> {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public void delete(@PathParam("id") Long id) {
-        personService.delete(id);
+        userService.delete(id);
     }
 
     @Override
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Person> findAll() {
-        return personService.findAll();
+    public List<User> findAll() {
+        return userService.findAll();
     }
 
     @Override
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Person find(@PathParam("id") Long id) {
-        return personService.find(id);
+    public User find(@PathParam("id") Long id) {
+        return userService.find(id);
     }
 }

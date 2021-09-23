@@ -1,4 +1,4 @@
-package controller;
+package ch.zli.m223.addressbook.controller;
 
 import java.util.List;
 

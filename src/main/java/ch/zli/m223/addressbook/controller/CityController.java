@@ -1,7 +1,7 @@
-package controller;
+package ch.zli.m223.addressbook.controller;
 
-import ch.zli.m223.addressbook.entity.Address;
-import ch.zli.m223.addressbook.service.AddressService;
+import ch.zli.m223.addressbook.entity.City;
+import ch.zli.m223.addressbook.service.CityService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -13,18 +13,17 @@ import java.util.List;
  * @version 23.09.2021
  * Project: addressbookserver
  */
-@Path("/addresses")
-public class AddressController extends AbstractController<Address> {
+public class CityController extends AbstractController<City> {
 
     @Inject
-    AddressService addressService;
+    CityService cityService;
 
     @Override
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Address create(Address entity) {
-        return addressService.create(entity);
+    public City create(City entity) {
+        return cityService.create(entity);
     }
 
     @Override
@@ -32,21 +31,21 @@ public class AddressController extends AbstractController<Address> {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public void delete(@PathParam("id") Long id) {
-        addressService.delete(id);
+        cityService.delete(id);
     }
 
     @Override
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Address> findAll() {
-        return addressService.findAll();
+    public List<City> findAll() {
+        return cityService.findAll();
     }
 
     @Override
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Address find(@PathParam("id") Long id) {
-        return addressService.find(id);
+    public City find(@PathParam("id") Long id) {
+        return cityService.find(id);
     }
 }
