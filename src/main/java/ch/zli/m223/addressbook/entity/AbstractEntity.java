@@ -2,7 +2,6 @@ package ch.zli.m223.addressbook.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.logging.Logger;
 
 
 /**
@@ -10,14 +9,12 @@ import java.util.logging.Logger;
  * @version 23.09.2021
  * Project: addressbookserver
  */
-@Entity
+@MappedSuperclass
 public abstract class AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
-    private static final Logger LOGGER = Logger.getLogger(AbstractEntity.class.getName());
 
     @Column(name = "create_date")
     private LocalDateTime createDate;
