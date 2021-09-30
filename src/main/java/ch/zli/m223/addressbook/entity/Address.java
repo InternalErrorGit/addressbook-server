@@ -1,9 +1,7 @@
 package ch.zli.m223.addressbook.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
+import javax.persistence.*;
 
 @Entity
 public class Address extends AbstractEntity {
@@ -17,7 +15,7 @@ public class Address extends AbstractEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "city_id")
     private City city;
 

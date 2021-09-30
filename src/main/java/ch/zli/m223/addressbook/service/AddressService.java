@@ -21,6 +21,12 @@ public class AddressService extends AbstractService<Address> {
 
     @Override
     @Transactional
+    public Address update(Address entity) {
+        return entityManager.merge(entity);
+    }
+
+    @Override
+    @Transactional
     public Address create(Address entity) {
         entityManager.persist(entity);
         return entity;

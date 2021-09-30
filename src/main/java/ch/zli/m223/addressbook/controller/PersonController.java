@@ -28,6 +28,14 @@ public class PersonController extends AbstractController<Person> {
     }
 
     @Override
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Person update(Person entity) {
+        return personService.update(entity);
+    }
+
+    @Override
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)

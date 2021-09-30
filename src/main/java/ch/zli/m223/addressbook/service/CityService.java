@@ -42,4 +42,10 @@ public class CityService extends AbstractService<City> {
     public City find(Long id) {
         return entityManager.find(City.class, id);
     }
+
+    @Override
+    @Transactional
+    public City update(City entity) {
+       return entityManager.merge(entity);
+    }
 }

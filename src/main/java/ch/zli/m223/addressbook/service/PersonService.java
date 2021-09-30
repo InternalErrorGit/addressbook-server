@@ -26,6 +26,7 @@ public class PersonService extends AbstractService<Person> {
         return entity;
     }
 
+
     @Override
     @Transactional
     public void delete(Long id) {
@@ -41,5 +42,11 @@ public class PersonService extends AbstractService<Person> {
     @Override
     public Person find(Long id) {
         return entityManager.find(Person.class, id);
+    }
+
+    @Override
+    @Transactional
+    public Person update(Person entity) {
+        return entityManager.merge(entity);
     }
 }

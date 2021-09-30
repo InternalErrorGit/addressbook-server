@@ -42,4 +42,11 @@ public class UserService extends AbstractService<User> {
     public User find(Long id) {
         return entityManager.find(User.class, id);
     }
+
+    public User find(User user) {
+        var query = entityManager.createQuery("FROM User where username = :username AND password = :password");
+        query.setParameter("username", user.getUsername());
+        query.setParameter("password", user.getPassword());
+        return (User) query.getSingleResult();
+    }
 }

@@ -49,4 +49,12 @@ public class AddressController extends AbstractController<Address> {
     public Address find(@PathParam("id") Long id) {
         return addressService.find(id);
     }
+
+    @Override
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Address update(Address entity) {
+        return addressService.update(entity);
+    }
 }

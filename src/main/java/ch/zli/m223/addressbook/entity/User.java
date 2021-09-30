@@ -3,6 +3,7 @@ package ch.zli.m223.addressbook.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+
 @Entity
 public class User extends AbstractEntity {
     @Column(name = "username", nullable = false, unique = true)
@@ -25,5 +26,13 @@ public class User extends AbstractEntity {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

@@ -1,5 +1,6 @@
 package ch.zli.m223.addressbook.controller;
 
+import javax.ws.rs.NotAllowedException;
 import java.util.List;
 
 /**
@@ -12,4 +13,7 @@ public abstract class AbstractController<T> {
     public abstract void delete(Long id);
     public abstract List<T> findAll();
     public abstract T find(Long id);
+    public T update(T entity){
+        throw new NotAllowedException("Cannot update User");
+    }
 }

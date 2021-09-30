@@ -1,7 +1,9 @@
 package ch.zli.m223.addressbook.controller;
 
+import ch.zli.m223.addressbook.entity.Address;
 import ch.zli.m223.addressbook.entity.City;
 import ch.zli.m223.addressbook.service.CityService;
+import io.quarkus.security.Authenticated;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -13,6 +15,8 @@ import java.util.List;
  * @version 23.09.2021
  * Project: addressbookserver
  */
+@Authenticated
+@Path("/cities")
 public class CityController extends AbstractController<City> {
 
     @Inject
@@ -47,5 +51,13 @@ public class CityController extends AbstractController<City> {
     @Produces(MediaType.APPLICATION_JSON)
     public City find(@PathParam("id") Long id) {
         return cityService.find(id);
+    }
+
+    @Override
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public City update(City entity) {
+        return cityService.update(entity);
     }
 }

@@ -1,7 +1,9 @@
 package ch.zli.m223.addressbook.controller;
 
 import ch.zli.m223.addressbook.entity.User;
+import ch.zli.m223.addressbook.service.AuthService;
 import ch.zli.m223.addressbook.service.UserService;
+import ch.zli.m223.addressbook.viewmodel.LoginViewModel;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -18,6 +20,22 @@ public class UserController extends AbstractController<User> {
 
     @Inject
     UserService userService;
+    @Inject
+    AuthService authService;
+
+    @POST
+    @Path("/login")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public LoginViewModel login(User user) {
+        System.out.println(user);
+        User check = userService.find(user);
+        if (check == null) {
+            throw new NotAuthorizedException("User not found");
+        } else {
+            return new LoginViewModel(authService.generateValidJwtToken(user.getUsername()), check.getId());
+        }
+    }
 
     @Override
     @POST
