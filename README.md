@@ -1,3 +1,14 @@
+# Addressbook Server Project
+## Setup
+* Make sure you have a Database running.
+* Enter database credentials into application.properties
+* Start the application server with ``mvn quarkus:dev``
+* Application should start
+* **Warning**
+  * if you are using a mariadb database, everything should work fine.
+  * If you are using a non mariadb database, you have to configure the application for your specific database type.
+* if something isnt working as intended, feel free to contact me on "gatzka@sowatec.com"
+
 # addressbookserver Project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
@@ -51,11 +62,3 @@ You can then execute your native executable with: `./target/addressbookserver-1.
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.html
 .
-
-## Provided Code
-
-### RESTEasy JAX-RS
-
-Easily start your RESTful Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
